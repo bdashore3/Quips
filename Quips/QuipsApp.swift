@@ -10,8 +10,11 @@ import SwiftUI
 @main
 struct QuipsApp: App {
     var body: some Scene {
+        let persistenceController = PersistenceController.shared
+
         WindowGroup {
-            ContentView()
+            MainView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
